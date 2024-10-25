@@ -20,10 +20,23 @@ form.addEventListener("submit", (event) => {
       );
     }
 
+    if (isNaN(dividend) || isNaN(divider)) {
+      throw new TypeError(
+        "Something critical went wrong. Please reload the page"
+      );
+    }
+
     const formula = Math.floor(dividend / divider);
     result.innerText = formula;
   } catch (error) {
-    result.innerText = error.message;
-    console.error(error.stack);
+    if (error instanceof TypeError) {
+      console.error(error.stack);
+      document.body.innerHTML =
+        "<h1>Something critical went wrong. Please reload the page.</h1>";
+      return;
+    } else {
+      result.innerText = error.message;
+      console.error(error.stack);
+    }
   }
 });
