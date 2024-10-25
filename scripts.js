@@ -29,8 +29,8 @@ form.addEventListener("submit", (event) => {
       );
     }
 
-    const formula = Math.floor(dividend / divider);
-    result.innerText = formula;
+    const wholeNumberFormula = Math.floor(dividend / divider);
+    result.innerText = wholeNumberFormula;
   } catch (error) {
     //handles making a new html body if inputs are not numbers
     if (error instanceof TypeError) {
