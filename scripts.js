@@ -14,9 +14,16 @@ form.addEventListener("submit", (event) => {
       );
     }
 
+    if (divider == 0) {
+      throw new Error(
+        "Division not performed. Invalid divider provided. Try again"
+      );
+    }
+
     const formula = Math.floor(dividend / divider);
     result.innerText = formula;
   } catch (error) {
     result.innerText = error.message;
+    console.error(error.stack);
   }
 });
